@@ -14,12 +14,6 @@ public class GameManager : MonoBehaviour
     {
         gameOver_Canvas.gameObject.SetActive(false);
         Overlay_Canvas.gameObject.SetActive(true);
-        //V_Sync();
-    }
-
-    void Update()
-    {
-        CheckPosition(-30f);
     }
 
     private void CheckPosition(float distance)

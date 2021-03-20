@@ -31,7 +31,8 @@ public class Cube : MonoBehaviour
     }
     private Color Color_Inverter(Color player_color)
     {
-        return new Color((1 - player_color.r), (1 - player_color.g),(1 - player_color.b));
+        float a = player_color.a; // Color's Alpha value //
+        return new Color((a - player_color.r), (a - player_color.g),(a - player_color.b));
     }
     void Update()
     {
@@ -42,7 +43,7 @@ public class Cube : MonoBehaviour
     }
     private Color GetPlayerColor()
     {
-        return  player.GetComponent<Renderer>().material.GetColor("_Color");
+        return player.GetComponent<Renderer>().material.GetColor("_Color");
     }
     private void Check_Color()
     {

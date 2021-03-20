@@ -2,25 +2,69 @@
 
 public class MovementController : MonoBehaviour
 {
-    private readonly float speed = 15f;
-    private readonly float maxvelocity = 50f;
+    public float speed = 15f;
+    public float maxvelocity = 50f;
+
+    public PhysicMaterial material1;
+    public PhysicMaterial material2;
+
+    private Collider col;
     private Rigidbody rb;
-	void Awake()
+    private Vector3 velocity;
+    private Vector3 tempVect;
+    private float mp;
+    private float screen_width;
+    void Awake()
     {
-        rb = GetComponent<Rigidbody>();       
+        rb = GetComponent<Rigidbody>();
+        col = GetComponent<Collider>();
     }
-    void FixedUpdate()
+    private void Start()
     {
-        Move_With_Keyboard();
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxvelocity);
+        SetMaterial(material2);
     }
     void Update()
     {
+        velocity = rb.velocity;
+    }
+    void FixedUpdate()
+    {
+        LimitVelocity();
+        MoveSphere();
+    }
+    private void LimitVelocity()
+    {
+        velocity = Vector3.ClampMagnitude(velocity, maxvelocity);
+
+        float x = velocity.x;
+        float y = velocity.y;
+
+        if(x != 0)
+        {
+            velocity.x = 0; // To prevent velocity spikes //
+        }
+        if(y < -22)
+        {
+            SetMaterial(material1); // Set Bounciness to 1 //
+        }
+        else
+        {
+            SetMaterial(material2); // Set Bounciness to 0.5 //
+        }
+        //Debug.Log(col.material.bounciness + " Velocity: " +velocity);
+    }
+    private void SetMaterial(PhysicMaterial material)
+    {
+        col.material = material;
+    }
+    private void MoveSphere()
+    {
+        Move_With_Mouse();
         //Move_With_Keyboard();
     }
     private void Movement(float a)
     {
-        Vector3 tempVect = new Vector3(a, 0, 0);
+        tempVect = new Vector3(a, 0, 0);
         tempVect = tempVect.normalized * speed * Time.fixedDeltaTime;
         rb.MovePosition(transform.position + tempVect);
     }
@@ -33,6 +77,23 @@ public class MovementController : MonoBehaviour
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             Movement(1f);
+        }
+    }
+    private void Move_With_Mouse()
+    {
+        mp = Input.mousePosition.x; // Get the mouse position //
+        screen_width = Screen.width; // Get the screen width of the device //
+
+        if (Input.GetMouseButton(0)) // if the touched surface is left side of the device go left //
+        {
+            if (mp < (screen_width / 2))
+            {
+                Movement(-1f);
+            }
+            else // if not go right //
+            {
+                Movement(1f);
+            }
         }
     }
 }
