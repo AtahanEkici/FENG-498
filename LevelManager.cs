@@ -11,8 +11,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        GenerateWall(Vector2.zero);
-        GeneratePlatform(Vector2.zero);
+        GenerateWall(Vector3.zero);
+        GeneratePlatform(Vector3.zero);
     }
 
     private void GenerateWall(Vector3 vector)

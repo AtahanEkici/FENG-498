@@ -9,12 +9,6 @@ public class CameraController : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
     private Vector3 targetPosition;
-
-    void Start()
-    {
-        //Offset = camTransform.position - Target.position;
-    }
-
     void FixedUpdate()
     {
         targetPosition = Target.position + Offset;

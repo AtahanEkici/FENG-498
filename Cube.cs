@@ -30,7 +30,7 @@ public class Cube : MonoBehaviour
     }
     private Color Color_Inverter(Color player_color)
     {
-        return new Color((1 - player_color.r), (1 - player_color.g),(1 - player_color.b), (1 - player_color.a));
+        return new Color((1 - player_color.r), (1 - player_color.g),(1 - player_color.b));
     }
     void Update()
     {

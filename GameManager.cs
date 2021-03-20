@@ -32,7 +32,10 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    public static void Quit_Game()
+    {
+        Application.Quit();
+    }
     public void GameOver()
     {
         player.gameObject.SetActive(false);
@@ -49,7 +52,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void V_Sync()
+    public static void V_Sync()
     {
         if(QualitySettings.vSyncCount == 1)
         {
