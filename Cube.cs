@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Cube : MonoBehaviour
 {
     public Color color;
+    public PhysicMaterial targetmaterial;
 
     private PlayerController player;
     private int ChildCount;
@@ -86,6 +87,7 @@ public class Cube : MonoBehaviour
         ChangeColor(color, References[Random_cube_number]); // Change Color of the chosen cube //
         References[Random_cube_number].tag = tag; // change its tag also //
         Chosen_One = References[Random_cube_number].gameObject; // pick up the chosen one's reference //
+        Chosen_One.GetComponent<Collider>().material = targetmaterial;
         CheckOthers(GetPlayerColor());
     }
 }

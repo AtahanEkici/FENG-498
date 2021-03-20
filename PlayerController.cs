@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     private Color Color_Randomizer()
     {
         selected_Color = Random.ColorHSV();
-        Debug.Log(selected_Color);
         return selected_Color;
     }
     private static void ChangeColor(Color color, Renderer renderer)
