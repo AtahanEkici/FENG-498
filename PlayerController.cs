@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
     public GameManager gm;
     public ParticleController particles;
     public CameraShake camshake;
-    //public Material toonmaterial;
 
     private Rigidbody rb;
     private Renderer Sphere_Renderer;
@@ -15,8 +14,6 @@ public class PlayerController : MonoBehaviour
     {
         Sphere_Renderer = GetComponent<Renderer>();
         rb = gameObject.GetComponent<Rigidbody>();
-        //gameObject.GetComponent<Renderer>().material = toonmaterial;
-        Debug.Log(gameObject.GetComponent<Renderer>().material.color);
     }
 
     void Start()

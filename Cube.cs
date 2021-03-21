@@ -31,7 +31,7 @@ public class Cube : MonoBehaviour
     }
     private Color Color_Inverter(Color player_color)
     {
-        float a = player_color.a; // Color's Alpha value //
+        float a = player_color.a; // Player Object's Color's Alpha value //
         return new Color((a - player_color.r), (a - player_color.g),(a - player_color.b));
     }
     void Update()
@@ -88,7 +88,8 @@ public class Cube : MonoBehaviour
         ChangeColor(color, References[Random_cube_number]); // Change Color of the chosen cube //
         References[Random_cube_number].tag = tag; // change its tag also //
         Chosen_One = References[Random_cube_number].gameObject; // pick up the chosen one's reference //
-        Chosen_One.GetComponent<Collider>().material = targetmaterial;
+        Collider col = Chosen_One.GetComponent<Collider>();
+        col.material = targetmaterial;
         CheckOthers(GetPlayerColor());
     }
 }
