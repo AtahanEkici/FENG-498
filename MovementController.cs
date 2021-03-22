@@ -19,7 +19,7 @@ public class MovementController : MonoBehaviour
     {
         if (rb.velocity.x != 0)
         {
-            rb.velocity = new Vector3(0, rb.velocity.y);
+            rb.velocity = new Vector3(0,rb.velocity.y,0);
         }
     }
     void FixedUpdate()
@@ -30,15 +30,6 @@ public class MovementController : MonoBehaviour
     private void LimitVelocity()
     {
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxvelocity);
-        
-        if(rb.velocity.y < -22)
-        {
-             // Set Bounciness to 1 //
-        }
-        else
-        {
-            // Set Bounciness to 0.5 //
-        }
     }
     private void SetMaterial(PhysicMaterial material)
     {
@@ -82,5 +73,11 @@ public class MovementController : MonoBehaviour
                 Movement(1f);
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision other_object)
+    {
+        Vector3 bounce = new Vector3(0, -(rb.velocity.y / 3), 0);
+        rb.AddForce(bounce, ForceMode.Impulse);
     }
 }
