@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
         gameOver_Canvas.gameObject.SetActive(false);
         Overlay_Canvas.gameObject.SetActive(true);
     }
+    void Update()
+    {
+        POR();
+    }
 
     private void CheckPosition(float distance)
     {
@@ -35,6 +39,24 @@ public class GameManager : MonoBehaviour
         player.gameObject.SetActive(false);
         gameOver_Canvas.gameObject.SetActive(true);
         Overlay_Canvas.gameObject.SetActive(false);
+    }
+    public void POR() // Pause Or Resume Function //
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Pause_Or_Resume();
+        }
+    }
+    private void Pause_Or_Resume()
+    {
+        if(Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        } 
     }
 
     private IEnumerator Load_Level()

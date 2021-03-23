@@ -6,14 +6,13 @@ public class PlayerController : MonoBehaviour
     public GameManager gm;
     public ParticleController particles;
     public CameraShake camshake;
+    public ScoreManager score;
 
-    private Rigidbody rb;
     private Renderer Sphere_Renderer;
 
     private void Awake()
     {
         Sphere_Renderer = GetComponent<Renderer>();
-        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     void Start()
@@ -34,22 +33,20 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other_object)
     {
-        Color Objects_Color = other_object.gameObject.GetComponent<Renderer>().material.GetColor("_Color");
-
-        if (other_object.gameObject.CompareTag("Cube"))
+        if (other_object.gameObject.CompareTag("Cube") || other_object.gameObject.CompareTag("Wall")) // Invincible Cube //
         {
-            camshake.InduceStress(5,8,1f);
+            camshake.InduceStress(5, 8, 1f);
             particles.PlayerDestroyed(transform.position);
-            other_object.gameObject.GetComponent<Rigidbody>().useGravity = true;
             gm.GameOver();
         }
 
-        else if (selected_Color == Objects_Color && other_object.gameObject.CompareTag("Cube_target"))
+        else if (other_object.gameObject.CompareTag("Cube_target")) // Destroyable Cube //
         {
+            Destroy(other_object.gameObject);
             camshake.InduceStress(2, 2, 1f);
             particles.ObjectDestroyed(other_object.transform.position);
-            Destroy(other_object.gameObject);
             ChangeColor(Color_Randomizer(), Sphere_Renderer);
+            score.IncrementScore(10);
         }
     }
 }
