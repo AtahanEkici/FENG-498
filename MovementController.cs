@@ -6,25 +6,21 @@ public class MovementController : MonoBehaviour
     public float maxvelocity = 50f;
     public Camera cam;
 
-    private Collider col;
     private Rigidbody rb;
+
     private Vector3 tempVect;
+    private Vector3 bounce;
+
     private float mp;
-    private float player_pos;
     private float screen_width;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
     }
     void FixedUpdate()
     {
         LimitVelocity();
-        MoveSphere();
-    }
-    void Update()
-    {
-        
+        Move_With_Mouse();
     }
     private void LimitVelocity()
     {
@@ -34,12 +30,6 @@ public class MovementController : MonoBehaviour
         {
             rb.velocity = new Vector3(0, rb.velocity.y);
         }
-    }
-    private void MoveSphere()
-    {
-        Move_With_Mouse();
-        //Move_To_Mouse_Position();
-        //Move_With_Keyboard();
     }
     private void Movement(float a)
     {
@@ -89,8 +79,43 @@ public class MovementController : MonoBehaviour
     {
         if (other_object.gameObject.CompareTag("Cube_target"))
         {
-            Vector3 bounce = new Vector3(0, -(rb.velocity.y / 3));
-            rb.AddForce(bounce, ForceMode.Impulse);
+            float velocity = rb.velocity.y;
+
+            if(velocity >= 70)
+            {
+                bounce = new Vector3(0, -(rb.velocity.y / 4));
+                rb.AddForce(bounce, ForceMode.Impulse);
+            }
+            else if(velocity >= 60)
+            {
+                bounce = new Vector3(0, -(rb.velocity.y / 5));
+                rb.AddForce(bounce, ForceMode.Impulse);
+            }
+            else if(velocity >= 50)
+            {
+                bounce = new Vector3(0, -(rb.velocity.y / 6));
+                rb.AddForce(bounce, ForceMode.Impulse);
+            }
+            else if(velocity >= 40)
+            {
+                bounce = new Vector3(0, -(rb.velocity.y / 7));
+                rb.AddForce(bounce, ForceMode.Impulse);
+            }
+            else if(velocity >= 30)
+            {
+                bounce = new Vector3(0, -(rb.velocity.y / 8));
+                rb.AddForce(bounce, ForceMode.Impulse);
+            }
+            else if(velocity >= 20)
+            {
+                bounce = new Vector3(0, -(rb.velocity.y / 9));
+                rb.AddForce(bounce, ForceMode.Impulse);
+            }
+            else
+            {
+                bounce = new Vector3(0, -(rb.velocity.y / 10));
+                rb.AddForce(bounce, ForceMode.Impulse);
+            }       
         }
     }
 }

@@ -5,21 +5,39 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI Score_text;
+    public Color text_color;
 
     private int score;
-    private int Highest_Score;
+    private bool isActive;
     void Awake()
     {
         score = 0;
-        Highest_Score = 0;   
+        isActive = false;
+    }
+    void Update()
+    {
+        if(isActive == true)
+        {
+            Score_text.fontSize += 2;
+
+            if (Score_text.fontSize >= 200)
+            {
+                isActive = false;
+            } 
+        }
+        else if (isActive == false && Score_text.fontSize > 150)
+        {
+            Score_text.fontSize -= 2;
+        }
     }
     public void IncrementScore(int value)
     {
         score += value;
-        if(score > Highest_Score)
-        {
-            Highest_Score = score;
-            Score_text.SetText("SCORE: "+Highest_Score+"");
-        }
+        IncrementAnimation();
+    }
+    private void IncrementAnimation()
+    {
+        Score_text.SetText("SCORE: " + score + "");
+        isActive = true;
     }
 }
