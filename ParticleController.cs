@@ -7,14 +7,9 @@ public class ParticleController : MonoBehaviour
     public ParticleSystem object_destroyed;
 
     private Material player_renderer_material;
-    private Renderer player_particle_renderer;
-    private Renderer object_particle_renderer;
-
     void Awake()
     {
         player_renderer_material = player.GetComponent<Renderer>().material;
-        object_particle_renderer = object_destroyed.GetComponent<Renderer>();
-        player_particle_renderer = player_destroyed.GetComponent<Renderer>();
     }
     private Color GetPlayerColor()
     {

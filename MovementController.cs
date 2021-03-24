@@ -1,26 +1,44 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
     public float speed = 15f;
     public float maxvelocity = 50f;
     public Camera cam;
+    public ParticleSystem flames;
 
     private Rigidbody rb;
-
     private Vector3 tempVect;
     private Vector3 bounce;
-
     private float mp;
     private float screen_width;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        flames.Pause();
     }
     void FixedUpdate()
     {
         LimitVelocity();
         Move_With_Mouse();
+    }
+    void Update()
+    {
+        ParticleControl();
+    }
+    private void ParticleControl()
+    {
+        float velocity = Math.Abs(rb.velocity.y);
+
+        if (velocity >= 50f)
+        {
+            flames.Play();
+        }
+        else
+        {
+            flames.Pause();
+        }
     }
     private void LimitVelocity()
     {
