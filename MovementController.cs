@@ -83,15 +83,6 @@ public class MovementController : MonoBehaviour
             }
         }
     }
-    private void Move_To_Mouse_Position() // Call in from update //
-    {
-        if (Input.GetMouseButton(0)) // if the touched surface is left side of the device go left //
-        {
-            Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            mousePos = new Vector3(mousePos.x, transform.position.y);
-            transform.Translate(Vector3.Lerp(transform.position, mousePos, speed * Time.fixedDeltaTime));
-        }
-    }
 
     private void OnCollisionEnter(Collision other_object)
     {
