@@ -17,8 +17,10 @@ public class LevelManager : MonoBehaviour
     public int initial_Walls = 5;
     public int initial_Blocks = 5;
 
+
     private float currentWallY;
     private float currentBlockY;
+
     private Vector3 BlockVector = Vector3.zero;
     private Vector3 WallVector = Vector3.zero;
     private Vector3 Player_Position;

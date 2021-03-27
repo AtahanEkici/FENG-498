@@ -10,14 +10,16 @@ public class ScoreManager : MonoBehaviour
     private int score;
     private bool isActive;
     private Color font_color;
+    private Color background_color;
     void Awake()
     {
         score = 0;
         isActive = false;
+        
     }
     void Start()
     {
-        font_color = GetPlayerColor();
+        font_color = GetPlayerColor();   
     }
     void Update()
     {
@@ -35,9 +37,15 @@ public class ScoreManager : MonoBehaviour
             return Color.white;
         }    
     }
+    private Color Color_Inverter(Color player_color)
+    {
+        float a = player_color.a; // Player Object's Color's Alpha value //
+        return new Color((a - player_color.r), (a - player_color.g), (a - player_color.b));
+    }
     private void SetFontColor(Color color)
     {
         Score_text.color = color;
+        Score_text.outlineColor = Color_Inverter(font_color);
     }
     private void CheckColor()
     {

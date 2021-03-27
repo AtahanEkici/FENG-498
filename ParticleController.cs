@@ -5,11 +5,13 @@ public class ParticleController : MonoBehaviour
     public GameObject player;
     public ParticleSystem player_destroyed;
     public ParticleSystem object_destroyed;
+    public ParticleSystem flames;
 
     private Material player_renderer_material;
     void Awake()
     {
         player_renderer_material = player.GetComponent<Renderer>().material;
+        flames.Pause();
     }
     private Color GetPlayerColor()
     {
@@ -38,5 +40,14 @@ public class ParticleController : MonoBehaviour
     {
         ChangeColor(GetPlayerColor(), player_destroyed.GetComponent<Renderer>());
         Destroy(Instantiate(player_destroyed, vector, Quaternion.identity), 10f);
+    }
+    public void FlameOn()
+    {
+        flames.Play();
+    }
+    public void FlameOff()
+    {
+        if(player != null)
+        flames.Pause();
     }
 }

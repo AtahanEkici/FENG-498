@@ -6,7 +6,7 @@ public class MovementController : MonoBehaviour
     public float speed = 15f;
     public float maxvelocity = 50f;
     public Camera cam;
-    public ParticleSystem flames;
+    public ParticleController Particle_Controller;
 
     private Rigidbody rb;
     private Vector3 tempVect;
@@ -16,7 +16,6 @@ public class MovementController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        flames.Pause();
     }
     void FixedUpdate()
     {
@@ -31,13 +30,13 @@ public class MovementController : MonoBehaviour
     {
         float velocity = Math.Abs(rb.velocity.y);
 
-        if (velocity >= 50f)
+        if(velocity >= 50f)
         {
-            flames.Play();
+            Particle_Controller.FlameOn();
         }
-        else
+        else if(velocity < 50f)
         {
-            flames.Pause();
+            Particle_Controller.FlameOff();
         }
     }
     private void LimitVelocity()

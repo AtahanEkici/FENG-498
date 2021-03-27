@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour
     public ScoreManager score;
 
     private Renderer Sphere_Renderer;
+    private Transform flames_transform;
 
     private void Awake()
     {
         Sphere_Renderer = GetComponent<Renderer>();
+        flames_transform = gameObject.GetComponentInChildren<ParticleSystem>().transform;
     }
 
     void Start()
@@ -21,7 +23,11 @@ public class PlayerController : MonoBehaviour
     }
     private Color Color_Randomizer()
     {
-        selected_Color = Random.ColorHSV();
+        float r = Random.Range(0f, 1f);
+        float g = Random.Range(0f, 1f);
+        float b = Random.Range(0f, 1f);
+
+        selected_Color = new Color(r,g,b,1); // Alpha value in rgba is always 1 //
         return selected_Color;
     }
     private static void ChangeColor(Color color, Renderer renderer)
@@ -35,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other_object.gameObject.CompareTag("Cube") || other_object.gameObject.CompareTag("Wall")) // Invincible Cube //
         {
+            flames_transform.parent = other_object.gameObject.transform;
             camshake.InduceStress(5, 8, 1f);
             particles.PlayerDestroyed(transform.position);
             gm.GameOver();
