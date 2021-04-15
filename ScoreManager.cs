@@ -58,7 +58,7 @@ public class ScoreManager : MonoBehaviour
     public void IncrementScore(int value)
     {
         score += value;
-        Score_text.SetText("SCORE: " + score + "");
+        Score_text.SetText(score.ToString());
         isActive = true;
     }
     private void IncrementAnimation()

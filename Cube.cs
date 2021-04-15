@@ -32,7 +32,7 @@ public class Cube : MonoBehaviour
     private Color Color_Inverter(Color player_color)
     {
         float a = player_color.a; // Player Object's Color's Alpha value //
-        return new Color((a - player_color.r), (a - player_color.g),(a - player_color.b));
+        return new Color((a - player_color.r), (a - player_color.g),(a - player_color.b),1);
     }
     void Update()
     {

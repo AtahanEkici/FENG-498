@@ -25,6 +25,8 @@ public class LevelManager : MonoBehaviour
     private Vector3 WallVector = Vector3.zero;
     private Vector3 Player_Position;
 
+    private Vector3 WallVector_factor = new Vector3(0, 20f, 0);
+
     void Start()
     {
         Initialize();
@@ -49,7 +51,7 @@ public class LevelManager : MonoBehaviour
     {
         Wall_Prefabs.Add(Instantiate(Wall_Prefab_1, vector, Quaternion.identity));
         currentWallY += 20f;
-        WallVector -= new Vector3(0, 20f, 0);
+        WallVector -= WallVector_factor;
     }
     private void GeneratePlatformInitial(Vector3 vector)
     {
@@ -61,7 +63,7 @@ public class LevelManager : MonoBehaviour
     {
         Wall_Prefabs.Add(Instantiate(Wall_Prefab_1, vector, Quaternion.identity));
         currentWallY += 20f;
-        WallVector -= new Vector3(0, 20f, 0);
+        WallVector -= WallVector_factor;
         Destroy(Wall_Prefabs[0]);
         Wall_Prefabs.RemoveAt(0);
     }
