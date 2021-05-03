@@ -82,6 +82,7 @@ public class MovementController : MonoBehaviour
             }
         }
     }
+
     private void OnCollisionEnter(Collision other_object)
     {
         if (other_object.gameObject.CompareTag("Cube_target"))
@@ -90,37 +91,37 @@ public class MovementController : MonoBehaviour
 
             if(velocity >= 70)
             {
-                bounce = new Vector3(0, (rb.velocity.y / -3),0);
+                bounce = new Vector3(0, -(rb.velocity.y / 4));
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else if(velocity >= 60)
             {
-                bounce = new Vector3(0, (rb.velocity.y / -4),0);
+                bounce = new Vector3(0, -(rb.velocity.y / 5));
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else if(velocity >= 50)
             {
-                bounce = new Vector3(0, (rb.velocity.y / -5),0);
+                bounce = new Vector3(0, -(rb.velocity.y / 6));
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else if(velocity >= 40)
             {
-                bounce = new Vector3(0, (rb.velocity.y / -6),0);
+                bounce = new Vector3(0, -(rb.velocity.y / 7));
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else if(velocity >= 30)
             {
-                bounce = new Vector3(0, (rb.velocity.y / -7),0);
+                bounce = new Vector3(0, -(rb.velocity.y / 8));
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else if(velocity >= 20)
             {
-                bounce = new Vector3(0, (rb.velocity.y / -8),0);
+                bounce = new Vector3(0, -(rb.velocity.y / 9));
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else
             {
-                bounce = new Vector3(0, (rb.velocity.y / -9),0);
+                bounce = new Vector3(0, -(rb.velocity.y / 10));
                 rb.AddForce(bounce, ForceMode.Impulse);
             }       
         }

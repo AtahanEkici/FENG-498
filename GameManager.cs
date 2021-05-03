@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
     public Canvas Overlay_Canvas;
 
     private AsyncOperation asyncLoadLevel;
-    private static int current_level = 1;
-    
+
     void Start()
     {
         gameOver_Canvas.gameObject.SetActive(false);
@@ -20,10 +19,7 @@ public class GameManager : MonoBehaviour
     {
         POR();
     }
-    private void IncrementLevel()
-    {
-        current_level++;
-    }
+
     private void CheckPosition(float distance)
     {
         if (player != null)
@@ -62,14 +58,16 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
         } 
     }
-    private IEnumerator Load_Level(int level)
+
+    private IEnumerator Load_Level()
     {
-        asyncLoadLevel = SceneManager.LoadSceneAsync(""+level+"",LoadSceneMode.Single);
+        asyncLoadLevel = SceneManager.LoadSceneAsync("1", LoadSceneMode.Single);
         while (!asyncLoadLevel.isDone)
         {
             yield return null;
         }
     }
+
     public static void V_Sync()
     {
         if(QualitySettings.vSyncCount == 1)
@@ -81,16 +79,19 @@ public class GameManager : MonoBehaviour
             QualitySettings.vSyncCount = 1;
         }
     }
+
     public void Force_Frame_Rate(int given_frame_rate)
     {
         Application.targetFrameRate = given_frame_rate;
     }
+
     public void Force_Frame_Rate()
     {
         Application.targetFrameRate = 10;
     }
+
     public void Restart_The_Game()
     {
-        StartCoroutine(Load_Level(current_level));
+        StartCoroutine(Load_Level());
     }
 }

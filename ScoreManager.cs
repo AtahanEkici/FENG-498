@@ -5,32 +5,40 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI Score_text;
+    public TextMeshProUGUI GameOver_Score_text;
     public PlayerController player;
+    public Button Try_Again_Button;
 
+    private Material player_material;
+    private TextMeshProUGUI Button_text;
+    private Color font_color;
     private int score;
     private bool isActive;
-    private Color font_color;
-    private Color background_color;
+    private ColorBlock cb;
+    private string currentScoreString;
     void Awake()
     {
         score = 0;
         isActive = false;
-        
+        player_material = player.GetComponent<Renderer>().material;
+        Button_text = Try_Again_Button.GetComponentInChildren<TextMeshProUGUI>();
+        cb = Try_Again_Button.colors;
     }
     void Start()
     {
-        font_color = GetPlayerColor();   
+        font_color = GetPlayerColor();
+        AdjustTexts();
     }
     void Update()
     {
-        IncrementAnimation();
+        IncrementAnimation(Score_text);
         CheckColor();
     }
     private Color GetPlayerColor()
     {
         if (player != null)
         {
-            return player.GetComponent<Renderer>().material.GetColor("_Color");
+            return player_material.GetColor("_Color");
         }
         else
         {
@@ -39,8 +47,7 @@ public class ScoreManager : MonoBehaviour
     }
     private Color Color_Inverter(Color player_color)
     {
-        float a = player_color.a; // Player Object's Color's Alpha value //
-        return new Color((a - player_color.r), (a - player_color.g), (a - player_color.b));
+        return new Color((1 - player_color.r), (1 - player_color.g), (1 - player_color.b));
     }
     private void SetFontColor(Color color)
     {
@@ -55,26 +62,38 @@ public class ScoreManager : MonoBehaviour
             SetFontColor(font_color);
         }
     }
-    public void IncrementScore(int value)
+    private void AdjustTexts()
+    {
+        cb.normalColor = font_color;
+        Try_Again_Button.image.color = font_color;
+        Button_text.color = Color_Inverter(font_color);
+    }
+    public void IncrementScore(int value) // too messy code  need to update it once i understood the textmesh pro better//
     {
         score += value;
-        Score_text.SetText(score.ToString());
+        currentScoreString = " SCORE: " + score.ToString();
+
+        Score_text.SetText(currentScoreString);
+        GameOver_Score_text.SetText(currentScoreString);
+
+        AdjustTexts();
+
         isActive = true;
     }
-    private void IncrementAnimation()
+    private void IncrementAnimation(TextMeshProUGUI scoretext)
     {
         if (isActive == true)
         {
-            Score_text.fontSize += 2;
+            scoretext.fontSize += 2;
 
-            if (Score_text.fontSize >= 200)
+            if (scoretext.fontSize >= 200)
             {
                 isActive = false;
             }
         }
-        else if (isActive == false && Score_text.fontSize > 150)
+        else if (isActive == false && scoretext.fontSize >= 150)
         {
-            Score_text.fontSize -= 2;
+            scoretext.fontSize -= 2;
         }
     }
 }
