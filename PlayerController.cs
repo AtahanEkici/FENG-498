@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
             flames_transform.position = other_object.gameObject.transform.position;
 
             var flame_main = flames.main;
-            flame_main.startLifetime = 0.35f;
+            flame_main.startLifetime = 0.56f;
 
             var flame_emission = flames.emission;
             flame_emission.rateOverTime = 500;
