@@ -13,16 +13,32 @@ public class MovementController : MonoBehaviour
     private Vector3 bounce;
     private float mp;
     private float screen_width;
-    void Awake()
+    private static MovementController _instance;
+
+    public static MovementController Instance
     {
+        get { return _instance; }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         rb = GetComponent<Rigidbody>();
     }
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         LimitVelocity();
         Move_With_Mouse();
     }
-    void Update()
+    private void Update()
     {
         ParticleControl();
     }
@@ -51,7 +67,7 @@ public class MovementController : MonoBehaviour
     private void Movement(float a)
     {
             tempVect = new Vector3(a, 0, 0);
-            tempVect = tempVect.normalized * speed * Time.fixedDeltaTime;
+            tempVect = speed * Time.fixedDeltaTime * tempVect.normalized;
             rb.MovePosition(transform.position + tempVect);
     }
     private void Move_With_Keyboard()
@@ -72,11 +88,11 @@ public class MovementController : MonoBehaviour
 
         if (Input.GetMouseButton(0)) // if the touched surface is left side of the device go left //
         {
-            if (mp < (screen_width / 2))
+            if (mp < (screen_width / 2) && transform.position.x >= -10.5)
             {
                 Movement(-1f);
             }
-            else // if not go right //
+            else if(transform.position.x <= 9.5)
             {
                 Movement(1f);
             }
@@ -91,37 +107,37 @@ public class MovementController : MonoBehaviour
 
             if(velocity >= 70)
             {
-                bounce = new Vector3(0, -(rb.velocity.y / 4));
+                bounce = new Vector3(0, -(rb.velocity.y / 2),0);
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else if(velocity >= 60)
             {
-                bounce = new Vector3(0, -(rb.velocity.y / 5));
+                bounce = new Vector3(0, -(rb.velocity.y / 3),0);
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else if(velocity >= 50)
             {
-                bounce = new Vector3(0, -(rb.velocity.y / 6));
+                bounce = new Vector3(0, -(rb.velocity.y / 4),0);
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else if(velocity >= 40)
             {
-                bounce = new Vector3(0, -(rb.velocity.y / 7));
+                bounce = new Vector3(0, -(rb.velocity.y / 5),0);
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else if(velocity >= 30)
             {
-                bounce = new Vector3(0, -(rb.velocity.y / 8));
+                bounce = new Vector3(0, -(rb.velocity.y / 6),0);
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else if(velocity >= 20)
             {
-                bounce = new Vector3(0, -(rb.velocity.y / 9));
+                bounce = new Vector3(0, -(rb.velocity.y / 7),0);
                 rb.AddForce(bounce, ForceMode.Impulse);
             }
             else
             {
-                bounce = new Vector3(0, -(rb.velocity.y / 10));
+                bounce = new Vector3(0, -(rb.velocity.y / 8),0);
                 rb.AddForce(bounce, ForceMode.Impulse);
             }       
         }

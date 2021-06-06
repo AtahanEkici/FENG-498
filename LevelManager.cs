@@ -6,6 +6,8 @@ public class LevelManager : MonoBehaviour
     public GameObject Cube_Prefab_1;
     public GameObject Wall_Prefab_1;
 
+    public bool DontSpawnCubes = false;
+
     public Transform player;
 
     public List<GameObject> Cube_Prefabs = new List<GameObject>();
@@ -17,6 +19,7 @@ public class LevelManager : MonoBehaviour
     public int initial_Walls = 5;
     public int initial_Blocks = 5;
 
+    private static LevelManager _instance;
 
     private float currentWallY;
     private float currentBlockY;
@@ -24,17 +27,47 @@ public class LevelManager : MonoBehaviour
     private Vector3 BlockVector = Vector3.zero;
     private Vector3 WallVector = Vector3.zero;
     private Vector3 Player_Position;
-
     private Vector3 WallVector_factor = new Vector3(0, 20f, 0);
 
-    void Start()
+    public static LevelManager Instance
     {
-        Initialize();
+        get { return _instance; }
     }
-    void Update()
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+    private void Start()
+    {
+        if(DontSpawnCubes == true)
+        {
+            InitializeOnlyWall();
+        }
+        else
+        {
+            Initialize();
+        }
+    }
+    private void Update()
     {
         Player_Position = player.position;
-        Generatelevel();
+
+        if(DontSpawnCubes == true)
+        {
+            GenerateOnlyWall();
+        }
+        else
+        {
+            Generatelevel();
+        }
     }
     private void Initialize()
     {
@@ -45,6 +78,14 @@ public class LevelManager : MonoBehaviour
         for (int j = 0; j < initial_Walls; j++)
         {
             GeneratePlatformInitial(BlockVector);
+        }
+    }
+
+    private void InitializeOnlyWall()
+    {
+        for (int i = 0; i < initial_Walls; i++)
+        {
+            GenerateWallInitial(WallVector);
         }
     }
     private void GenerateWallInitial(Vector3 vector)
@@ -85,6 +126,14 @@ public class LevelManager : MonoBehaviour
         if (Player_Position.y + currentBlockY < distanceBeforeSpawnBlock)
         {
             GeneratePlatform(BlockVector);
+        }
+    }
+
+    private void GenerateOnlyWall()
+    {
+        if (Player_Position.y + currentWallY < distanceBeforeSpawnWall)
+        {
+            GenerateWall(WallVector);
         }
     }
 }

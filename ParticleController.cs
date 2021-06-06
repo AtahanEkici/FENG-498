@@ -8,8 +8,24 @@ public class ParticleController : MonoBehaviour
     public ParticleSystem flames;
 
     private Material player_renderer_material;
-    void Awake()
+    private static ParticleController _instance;
+
+    public static ParticleController Instance
     {
+        get { return _instance; }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    
         player_renderer_material = player.GetComponent<Renderer>().material;
         flames.Pause();
     }

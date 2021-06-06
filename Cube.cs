@@ -13,8 +13,7 @@ public class Cube : MonoBehaviour
     private GameObject Chosen_One;
 
     readonly private new string tag = "Cube_target";
-
-    void Awake()
+        private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>(); // Catch reference from game environment //
 

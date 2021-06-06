@@ -12,9 +12,25 @@ public class CameraShake : MonoBehaviour
     private float trauma;
     private float seed;
     private float frequency = 25;
+    private static CameraShake _instance;
+
+    public static CameraShake Instance
+    {
+        get { return _instance; }
+    }
+
     private void Awake()
     {
-        seed = Random.value;
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+
+        }
+            seed = Random.value;
     }
     private void Start()
     {

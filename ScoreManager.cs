@@ -16,8 +16,24 @@ public class ScoreManager : MonoBehaviour
     private bool isActive;
     private ColorBlock cb;
     private string currentScoreString;
-    void Awake()
+    private static ScoreManager _instance;
+
+    public static ScoreManager Instance
     {
+        get { return _instance; }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         score = 0;
         isActive = false;
         player_material = player.GetComponent<Renderer>().material;

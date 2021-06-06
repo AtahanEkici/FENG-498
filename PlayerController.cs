@@ -3,6 +3,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Color selected_Color;
+    public Color outline_Color;
+    public float transition_time;
+
     public GameManager gm;
     public ParticleController particles;
     public CameraShake camshake;
@@ -11,26 +14,43 @@ public class PlayerController : MonoBehaviour
 
     private Renderer Sphere_Renderer;
     private Transform flames_transform;
+    private static PlayerController _instance;
+    
+
+    public static PlayerController Instance
+    {
+        get { return _instance; }
+    }
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         Sphere_Renderer = GetComponent<Renderer>();
         flames_transform = gameObject.GetComponentInChildren<ParticleSystem>().transform;
+       
     }
 
-    void Start()
+    private void Start()
     {
         ChangeColor(Color_Randomizer(), Sphere_Renderer);
     }
-    private Color Color_Randomizer()
+
+    public static Color Color_Randomizer()
     {
         float r = Random.Range(0.0f, 1.0f);
         float g = Random.Range(0.0f, 1.0f);
         float b = Random.Range(0.0f, 1.0f);
-        selected_Color = new Color(r,g,b); // Alpha value in rgba is always 1 //
-        return selected_Color;
+        return new Color(r,g,b,1); // Alpha value in rgba is always 1 //
     }
-    private static void ChangeColor(Color color, Renderer renderer)
+    private void ChangeColor(Color color, Renderer renderer)
     {
         if(renderer.gameObject != null)
         {
@@ -39,13 +59,13 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other_object)
     {
-        if (other_object.gameObject.CompareTag("Cube") || other_object.gameObject.CompareTag("Wall"))
+        if (other_object.gameObject.CompareTag("Cube"))
         {
             flames_transform.parent = other_object.gameObject.transform;
             flames_transform.position = other_object.gameObject.transform.position;
 
             var flame_main = flames.main;
-            flame_main.startLifetime = 0.56f;
+            flame_main.startLifetime = 0.5f;
 
             var flame_emission = flames.emission;
             flame_emission.rateOverTime = 500;

@@ -9,7 +9,26 @@ public class CameraController : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
     private Vector3 targetPosition;
-    void FixedUpdate()
+    private static CameraController _instance;
+
+    public static CameraController Instance
+    {
+        get { return _instance; }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+
+        }
+    }
+     private void FixedUpdate()
     {
         targetPosition = Target.position + Offset;
         camTransform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, SmoothTime);
