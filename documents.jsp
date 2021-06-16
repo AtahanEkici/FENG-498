@@ -258,14 +258,14 @@ padding:3%;
   <ul class="list-group appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="500">
       
   <li class="list-group-item list-group-item-primary"><b>Buluşma Raporları</b>
-  <a href="reports/Week 1/Meeting Minutes Form-1.pdf" target="pdf-frame" class="list-group-item disabled ">1. Buluşma Raporu</a>
-  <a href="reports/Week 2/Meeting Minutes Form-2.pdf" target="pdf-frame" class="list-group-item disabled">2. Buluşma Raporu</a>
-  <a href="reports/Week 3/Meeting Minutes Form-3.pdf" target="pdf-frame" class="list-group-item disabled">3. Buluşma Raporu</a>
-  <a href="reports/Week 4/Meeting Minutes Form-4.pdf" target="pdf-frame" class="list-group-item disabled">4. Buluşma Raporu</a>
-  <a href="reports/Week 5/Meeting Minutes Form-5.pdf" target="pdf-frame" class="list-group-item disabled">5. Buluşma Raporu</a>
-  <a href="reports/Week 6/Meeting Minutes Form-6.pdf" target="pdf-frame" class="list-group-item disabled">6. Buluşma Raporu</a>
-  <a href="reports/Week 7/Meeting Minutes Form-7.pdf" target="pdf-frame" class="list-group-item disabled">7. Buluşma Raporu</a>
-  <a href="reports/Week 8/Meeting Minutes Form-8.pdf" target="pdf-frame" class="list-group-item disabled">8. Buluşma Raporu</a>
+  <a href="reports/Week 1/Meeting Minutes Form-1.pdf" target="pdf-frame" class="list-group-item list-group-item-success">1. Buluşma Raporu</a>
+  <a href="reports/Week 2/Meeting Minutes Form-2.pdf" target="pdf-frame" class="list-group-item list-group-item-success">2. Buluşma Raporu</a>
+  <a href="reports/Week 3/Meeting Minutes Form-3.pdf" target="pdf-frame" class="list-group-item list-group-item-success">3. Buluşma Raporu</a>
+  <a href="reports/Week 4/Meeting Minutes Form-4.pdf" target="pdf-frame" class="list-group-item list-group-item-success">4. Buluşma Raporu</a>
+  <a href="reports/Week 5/Meeting Minutes Form-5.pdf" target="pdf-frame" class="list-group-item list-group-item-success">5. Buluşma Raporu</a>
+  <a href="reports/Week 6/Meeting Minutes Form-6.pdf" target="pdf-frame" class="list-group-item list-group-item-success">6. Buluşma Raporu</a>
+  <a href="reports/Week 7/Meeting Minutes Form-7.pdf" target="pdf-frame" class="list-group-item list-group-item-success">7. Buluşma Raporu</a>
+  <a href="reports/Week 8/Meeting Minutes Form-8.pdf" target="pdf-frame" class="list-group-item list-group-item-success">8. Buluşma Raporu</a>
   <a href="reports/Week 9/Meeting Minutes Form-9.pdf" target="pdf-frame" class="list-group-item disabled">9. Buluşma Raporu</a>
   <a href="reports/Week 10/Meeting Minutes Form-10.pdf" target="pdf-frame" class="list-group-item disabled">10. Buluşma Raporu</a>
   <a href="reports/Week 11/Meeting Minutes Form-11.pdf" target="pdf-frame" class="list-group-item disabled">11. Buluşma Raporu</a>

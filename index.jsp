@@ -344,14 +344,14 @@
 							<span class="thumb-info thumb-info-hide-wrapper-bg">
 								<span class="thumb-info-wrapper">
 									<a href="https://github.com/AtahanEkici/FENG-498" target="_blank">
-										<img style="height: 100%; width: 100%; object-fit: contain" src="img/under_development.webp" alt="Örnek Resim"/>
+										<img style="height: 100%; width: 100%; object-fit: contain" src="img/Fleptris.webp" alt="Örnek Resim"/>
 										<span class="thumb-info-title">
-										<span class="thumb-info-inner">Game 3</span>
+										<span class="thumb-info-inner">Fleptris</span>
 										</span>
 									</a>
 								</span>
 								<span class="thumb-info-caption">
-									<a href="Game_3.jsp"class="btn btn-lg btn-primary text-3 font-weight-semibold" style="width: 100%; margin-top: 10px;">In development</a>
+									<a href="Fleptris.jsp"class="btn btn-lg btn-primary text-3 font-weight-semibold" style="width: 100%; margin-top: 10px;">Play Now!</a>
 								</span>
 							</span>
 						</div>
@@ -366,7 +366,7 @@
 									</a>
 								</span>
 								<span class="thumb-info-caption">
-									<a href="#" class="btn btn-lg btn-primary text-3 font-weight-semibold" style="width: 100%; margin-top: 10px; disabled">In development</a>
+									<a href="Cannon Smash.jsp" class="btn btn-lg btn-primary text-3 font-weight-semibold" style="width: 100%; margin-top: 10px; disabled">In development</a>
 								</span>
 							</span>
 						</div>
