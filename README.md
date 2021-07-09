@@ -4,6 +4,6 @@
 
 ![Alt Text](https://github.com/AtahanEkici/FENG-498/blob/main/Fleptris.webp)
 
-## Fleptris ##
+## Cannon Smash ##
 
 ![Alt Text](https://github.com/AtahanEkici/FENG-498/blob/main/Cannon_Smash.png)
