@@ -1,5 +1,9 @@
 # FENG-498 #
 
-## Screen Shots ##
+## Fleptris ##
 
 ![Alt Text](https://github.com/AtahanEkici/FENG-498/blob/main/Fleptris.webp)
+
+## Fleptris ##
+
+![Alt Text](https://github.com/AtahanEkici/FENG-498/blob/main/Cannon_Smash.png)
