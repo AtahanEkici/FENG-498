@@ -266,21 +266,21 @@
                                                                                                                         if(Language_Selected == null || Language_Selected.equals("TUR"))
                                                                                                                         {
                                                                                                                     %>
-                                                                                                                            Oyunlarımız Bunlar
+                                                                                                                            Oyunlarımız
                                                                                                                     <%       
                                                                                                                         }
 
                                                                                                                      else if(Language_Selected.equals("GER"))
                                                                                                                         {
                                                                                                                     %>
-                                                                                                                            Hier sind unsere Spiele
+                                                                                                                            Unsere Spiele
                                                                                                                     <%       
                                                                                                                         }
                                                                                                                     
                                                                                                                     else
                                                                                                                         {
                                                                                                                     %>
-                                                                                                                            Here is our Games
+                                                                                                                            Our Games
                                                                                                                     <%       
                                                                                                                         }
                                                                                                                     %></strong></h2>
@@ -310,7 +310,7 @@
                                         
                                         <p>|<a target="_blank" href="https://www.linkedin.com/in/atahan-ekici-580801167/"> Atahan Ekici </a>|<a target="_blank" href="https://www.linkedin.com/in/egemen-ustaoglu/"> Egemen Ustaoğlu </a>|</p>
 					<div class="row pb-5">
-						<div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
+						<div class="col-sm-6 col-lg-3 mb-4 mb-lg-0" title="Emeği Geçenler: &#013;Atahan Ekici&#013;Berk Kocaman&#013;Orhan Eryiğit&#013;Zeynep Tokgözlü">
 							<span class="thumb-info thumb-info-hide-wrapper-bg">
 								<span class="thumb-info-wrapper">
 									<a href="https://github.com/AtahanEkici/FENG-497" target="_blank">
@@ -325,7 +325,7 @@
 								</span>
 							</span>
 						</div>
-						<div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
+						<div class="col-sm-6 col-lg-3 mb-4 mb-lg-0" title="Emeği Geçenler: &#013;Egemen Ustaoğlu">
 							<span class="thumb-info thumb-info-hide-wrapper-bg">
 								<span class="thumb-info-wrapper">
 									<a href="https://github.com/AtahanEkici/FENG-497" target="_blank">
@@ -340,11 +340,11 @@
 								</span>
 							</span>
 						</div>
-						<div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
+						<div class="col-sm-6 col-lg-3 mb-4 mb-lg-0" title="Emeği Geçenler: &#013;Atahan Ekici">
 							<span class="thumb-info thumb-info-hide-wrapper-bg">
 								<span class="thumb-info-wrapper">
 									<a href="https://github.com/AtahanEkici/FENG-498" target="_blank">
-										<img style="height: 100%; width: 100%; object-fit: contain" src="img/Fleptris.webp" alt="Örnek Resim"/>
+										<img style="height: 100%; width: 100%; object-fit: contain" src="img/Fleptris.png" alt="Örnek Resim"/>
 										<span class="thumb-info-title">
 										<span class="thumb-info-inner">Fleptris</span>
 										</span>
@@ -355,18 +355,18 @@
 								</span>
 							</span>
 						</div>
-						<div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
+						<div class="col-sm-6 col-lg-3 mb-4 mb-lg-0" title="Emeği Geçenler: &#013;Egemen Ustaoğlu">
 							<span class="thumb-info thumb-info-hide-wrapper-bg">
 								<span class="thumb-info-wrapper">
 									<a href="https://github.com/AtahanEkici/FENG-498" target="_blank">
-										<img style="height: 100%; width: 100%; object-fit: contain" src="img/under_development.webp" alt="Örnek Resim"/>
+										<img style="height: 100%; width: 100%; object-fit: contain" src="img/Cannon_Smash.png" alt="Örnek Resim"/>
 										<span class="thumb-info-title">
-										<span class="thumb-info-inner">Game 4</span>
+										<span class="thumb-info-inner">Cannon Smash</span>
 										</span>
 									</a>
 								</span>
 								<span class="thumb-info-caption">
-									<a href="Cannon Smash.jsp" class="btn btn-lg btn-primary text-3 font-weight-semibold" style="width: 100%; margin-top: 10px; disabled">In development</a>
+									<a href="Cannon Smash.jsp" class="btn btn-lg btn-primary text-3 font-weight-semibold" style="width: 100%; margin-top: 10px; disabled">Play Now!</a>
 								</span>
 							</span>
 						</div>

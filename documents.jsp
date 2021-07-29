@@ -237,7 +237,7 @@
 				</div>
 			</header>
 			<div role="main" class="main">
-								<section style="margin-bottom: 0px;<%
+<section style="margin-bottom: 0px;<%
 if(Is_Mobile == true)
 {
 %>  
@@ -245,19 +245,18 @@ padding:3%;
 <%        
 }
 %>"class="page-header page-header-sm">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-8 order-2 order-md-1 align-self-center p-static">
-								
-							</div>
-						</div>
-					</div>     
-                                </section>                                          
-        
-                                        <div>
+<div class="container">
+<div class="row">
+<div class="col-md-8 order-2 order-md-1 align-self-center p-static">
+</div>
+</div>
+</div>     
+</section>                                          
+<div>
+    
   <ul class="list-group appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="500">
       
-  <li class="list-group-item list-group-item-primary"><b>Buluşma Raporları</b>
+  <li id="forms" class="list-group-item list-group-item-primary"><b>Buluşma Raporları</b>
   <a href="reports/Week 1/Meeting Minutes Form-1.pdf" target="pdf-frame" class="list-group-item list-group-item-success">1. Buluşma Raporu</a>
   <a href="reports/Week 2/Meeting Minutes Form-2.pdf" target="pdf-frame" class="list-group-item list-group-item-success">2. Buluşma Raporu</a>
   <a href="reports/Week 3/Meeting Minutes Form-3.pdf" target="pdf-frame" class="list-group-item list-group-item-success">3. Buluşma Raporu</a>
@@ -266,27 +265,23 @@ padding:3%;
   <a href="reports/Week 6/Meeting Minutes Form-6.pdf" target="pdf-frame" class="list-group-item list-group-item-success">6. Buluşma Raporu</a>
   <a href="reports/Week 7/Meeting Minutes Form-7.pdf" target="pdf-frame" class="list-group-item list-group-item-success">7. Buluşma Raporu</a>
   <a href="reports/Week 8/Meeting Minutes Form-8.pdf" target="pdf-frame" class="list-group-item list-group-item-success">8. Buluşma Raporu</a>
-  <a href="reports/Week 9/Meeting Minutes Form-9.pdf" target="pdf-frame" class="list-group-item disabled">9. Buluşma Raporu</a>
-  <a href="reports/Week 10/Meeting Minutes Form-10.pdf" target="pdf-frame" class="list-group-item disabled">10. Buluşma Raporu</a>
-  <a href="reports/Week 11/Meeting Minutes Form-11.pdf" target="pdf-frame" class="list-group-item disabled">11. Buluşma Raporu</a>
+  <a href="reports/Week 9/Meeting Minutes Form-9.pdf" target="pdf-frame" class="list-group-item list-group-item-success">9. Buluşma Raporu</a>
+  <a href="reports/Week 10/Meeting Minutes Form-10.pdf" target="pdf-frame" class="list-group-item list-group-item-success">10. Buluşma Raporu</a>
   </li>
 
-  <li class="list-group-item list-group-item-info"><b>Proje Sunumu</b>
-  <a href="reports/Proposal/Graduation Project Proposal.pdf" target="pdf-frame" class="list-group-item disabled">Project Proposal</a>
-  </li>
-
+  <li class="list-group-item list-group-item-info">
+  <iframe id="presentation" onClick="bigger()" src="https://www.youtube.com/embed/URcrlg4A4ME?rel=0" title="FENG-498 Presentation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  </li>
   <li class="list-group-item list-group-item-secondary"><b>Bitirme Dökümanı</b>
-  <a href="reports/Final/FENG 498 Final Report.pdf" target="pdf-frame" class="list-group-item disabled">Final Document</a>
-  </li>
-      
+  <a href="reports/Final/FENG 498 Final Document.pdf" target="pdf-frame" class="list-group-item list-group-item-success">Final Document</a>
+  </li>  
   </ul>    
   </div>
   </div>
   </div>
 
-			<footer id="footer" style=" margin-top: 0px; border-top-width: 0px;">
-			<div class="footer-copyright">
-			<div class="row py-4" style="   
+<footer id="footer" style=" margin-top: 0px; border-top-width: 0px;">
+<div class="footer-copyright">
+<div class="row py-4" style="   
    position: relative;
    left: 0;
    right: 0;
@@ -294,12 +289,12 @@ padding:3%;
    width: 100%;
    margin: 0;
    text-align: center;">
-							<div class="col text-center">
-								<ul class="footer-social-icons social-icons social-icons-clean social-icons-icon-light mb-3">
-									<li class="social-icons-github"><a href="https://github.com/AtahanEkici/FENG-498" target="_blank" title="GitHub"><i class="fab fa-github-alt"></i></a></li>
-                                                                        <li class="social-icons-clean"><a href="mailto:atahanekici@hotmail.com" target="_blank" title="MailTo"><i class="fa fa-envelope-square"></i></a></li>
-								</ul>
-								<p><strong>FENG 498</strong> - <%=year%> - <%
+<div class="col text-center">
+<ul class="footer-social-icons social-icons social-icons-clean social-icons-icon-light mb-3">
+<li class="social-icons-github"><a href="https://github.com/AtahanEkici/FENG-498" target="_blank" title="GitHub"><i class="fab fa-github-alt"></i></a></li>
+<li class="social-icons-clean"><a href="mailto:atahanekici@hotmail.com" target="_blank" title="MailTo"><i class="fa fa-envelope-square"></i></a></li>
+</ul>
+<p><strong>FENG 498</strong> - <%=year%> - <%
                                                                                                                         if(Language_Selected == null || Language_Selected.equals("ENG"))
                                                                                                                         {
                                                                                                                     %>
@@ -321,10 +316,30 @@ padding:3%;
                                                                                                                     <%       
                                                                                                                         }
                                                                                                                     %></p>
-							</div>
-						</div>
-				</div>
-			</footer>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    var presentation_video = document.getElementById("presentation");
+    var normal_width = document.getElementById("forms").width;
+    presentation_video.width = normal_width;
+    function bigger()
+    { 
+        presentation_video.width = 900;
+        presentation_video.height = 600;
+        presentation_video.scrollIntoView();
+    }
+    focus();
+    var listener = window.addEventListener('blur', function() 
+    {   
+    if (document.activeElement === presentation_video) 
+    {
+        bigger();
+    }
+    window.removeEventListener('blur', listener);
+});
+</script>
 
 		<!-- Vendor -->
 		<script src="vendor/jquery/jquery.min.js"></script>
