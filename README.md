@@ -1,3 +1,3 @@
 # FENG-498
 
-Website pages for our projects.
+Website pages for our project.
