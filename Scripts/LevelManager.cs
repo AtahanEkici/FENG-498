@@ -30,8 +30,6 @@ public class LevelManager : MonoBehaviour
     private Vector3 Player_Position;
     private Vector3 WallVector_factor = new Vector3(0, 20f, 0);
 
-    private bool flag = false;
-
     public static LevelManager Instance
     {
         get { return _instance; }
@@ -99,19 +97,19 @@ public class LevelManager : MonoBehaviour
     }
     private void GeneratePlatformInitial(Vector3 vector)
     {
-        if(flag == false)
+        float choice = Random.Range(0f, 100f);
+
+        if (choice >= 50f)
         {
             Cube_Prefabs.Add(Instantiate(Cube_Prefab_1, vector, Quaternion.identity));
             currentBlockY += distanceBeforeSpawnBlock;
             BlockVector -= new Vector3(0, distanceBeforeSpawnBlock, 0);
-            flag = true;
         }
         else
         {
             Cube_Prefabs.Add(Instantiate(Cube_Prefab_2, vector, Quaternion.identity));
             currentBlockY += distanceBeforeSpawnBlock;
             BlockVector -= new Vector3(0, distanceBeforeSpawnBlock, 0);
-            flag = false;
         }
     }
     private void GenerateWall(Vector3 vector)
@@ -124,19 +122,19 @@ public class LevelManager : MonoBehaviour
     }
     private void GeneratePlatform(Vector3 vector)
     {
-        if (flag == false)
+        float choice = Random.Range(0f,100f);
+
+        if (choice >= 50f)
         {
             Cube_Prefabs.Add(Instantiate(Cube_Prefab_1, vector, Quaternion.identity));
             currentBlockY += distanceBeforeSpawnBlock;
             BlockVector -= new Vector3(0, distanceBeforeSpawnBlock, 0);
-            flag = true;
         }
         else
         {
             Cube_Prefabs.Add(Instantiate(Cube_Prefab_2, vector, Quaternion.identity));
             currentBlockY += distanceBeforeSpawnBlock;
             BlockVector -= new Vector3(0, distanceBeforeSpawnBlock, 0);
-            flag = false;
         }
 
         Destroy(Cube_Prefabs[0]);

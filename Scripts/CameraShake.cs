@@ -28,7 +28,6 @@ public class CameraShake : MonoBehaviour
         else
         {
             _instance = this;
-
         }
             seed = Random.value;
     }

@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
     private string currentScoreString;
     private static ScoreManager _instance;
     private int max_score;
+    private float font_size = 10f;
 
     void OnDisable()
     {
@@ -52,6 +53,7 @@ public class ScoreManager : MonoBehaviour
         player_material = player.GetComponent<Renderer>().material;
         Button_text = Try_Again_Button.GetComponentInChildren<TextMeshProUGUI>();
         cb = Try_Again_Button.colors;
+        font_size = Score_text.fontSize;
     }
     void Start()
     {
@@ -127,18 +129,20 @@ public class ScoreManager : MonoBehaviour
     }
     private void IncrementAnimation(TextMeshProUGUI scoretext)
     {
+        float speed = 300f;
+
         if (isActive == true)
         {
-            scoretext.fontSize += 2;
+            scoretext.fontSize += speed * Time.deltaTime;
 
-            if (scoretext.fontSize >= 200)
+            if (scoretext.fontSize >= font_size*2)
             {
                 isActive = false;
             }
         }
-        else if (isActive == false && scoretext.fontSize >= 150)
+        else if (isActive == false && scoretext.fontSize >= font_size)
         {
-            scoretext.fontSize -= 2;
+            scoretext.fontSize -= speed * Time.deltaTime;
         }
     }
 }
