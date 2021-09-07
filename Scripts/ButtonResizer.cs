@@ -4,11 +4,11 @@ public class ButtonResizer : MonoBehaviour
 {
     private bool Expend = true;
 
-    [SerializeField] private float Animation_Speed = 30f;
+    [SerializeField] private float Animation_Speed = 200f;
     [SerializeField] private Vector3 scale;
     [SerializeField] private Vector3 rate = new Vector3(0.01f, 0.01f, 0.01f);
     [SerializeField] private float MAX_Scale = 2.5f;
-    [SerializeField] private float MIN_Scale = 1f;
+    [SerializeField] private float MIN_Scale = 1.3f;
 
     private void Start()
     {
@@ -16,13 +16,13 @@ public class ButtonResizer : MonoBehaviour
     }
     private void Update()
     {
-        ScaleAnimation();
+            ScaleAnimation(Time.unscaledDeltaTime);
     }
-    private void ScaleAnimation()
+    private void ScaleAnimation(float a)
     {
         if(Expend == true)
         {
-            scale = gameObject.transform.localScale += rate * Time.deltaTime * Animation_Speed;
+            scale = gameObject.transform.localScale += rate * a * Animation_Speed;
 
             float X = scale.x;
 
@@ -33,7 +33,7 @@ public class ButtonResizer : MonoBehaviour
         }
         else if(Expend == false)
         {
-            scale = gameObject.transform.localScale -= rate * Time.deltaTime * Animation_Speed;
+            scale = gameObject.transform.localScale -= rate * a * Animation_Speed;
 
             float X = scale.x;
 

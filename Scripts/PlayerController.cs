@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
     private Renderer Sphere_Renderer;
     private Transform flames_transform;
     private static PlayerController _instance;
-    
-
     public static PlayerController Instance
     {
         get { return _instance; }

@@ -4,14 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerController player;
-    public Canvas gameOver_Canvas;
-    public Canvas Overlay_Canvas;
-
-    public KeyCode PauseGameButton = KeyCode.Space;
+    [SerializeField] private PlayerController player;
+    [SerializeField] private Canvas gameOver_Canvas;
+    [SerializeField] private Canvas Overlay_Canvas;
+    [SerializeField] private Canvas Play_Canvas;
 
     private AsyncOperation asyncLoadLevel;
     private static GameManager _instance;
+    private string CurrentSceneName;
 
     public static GameManager Instance
     {
@@ -28,14 +28,39 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
     }
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("Play_Button", 1);
+    }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void OnBeforeSceneLoadRuntimeMethod()
+    {
+        PlayerPrefs.SetInt("Play_Button", 1);
+    }
     private void Start()
     {
-        gameOver_Canvas.gameObject.SetActive(false);
-        Overlay_Canvas.gameObject.SetActive(true);
+        if(PlayerPrefs.GetInt("Play_Button") == 1)
+        {
+            Time.timeScale = 0;
+            gameOver_Canvas.gameObject.SetActive(false);
+            Overlay_Canvas.gameObject.SetActive(false);
+            PlayerPrefs.SetInt("Play_Button", 0);
+        }
+        else
+        {
+            Overlay_Canvas.gameObject.SetActive(true);
+            gameOver_Canvas.gameObject.SetActive(false);
+            Play_Canvas.gameObject.SetActive(false);
+            Time.timeScale = 1;
+        }
+        
     }
-    private void Update()
+    public void Start_Game()
     {
-        Pause_Game(KeyCode.Space);
+        Time.timeScale = 1;
+        Play_Canvas.gameObject.SetActive(false);
+        Overlay_Canvas.gameObject.SetActive(true);
     }
     private void CheckPosition(float distance)
     {
