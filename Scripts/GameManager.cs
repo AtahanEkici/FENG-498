@@ -8,17 +8,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas gameOver_Canvas;
     [SerializeField] private Canvas Overlay_Canvas;
     [SerializeField] private Canvas Play_Canvas;
-
     private AsyncOperation asyncLoadLevel;
     private static GameManager _instance;
-    private string CurrentSceneName;
 
-    public static GameManager Instance
+    private static GameManager Instance
     {
         get { return _instance; }
     }
-    private void Awake()
+    void Awake()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
+
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
@@ -28,21 +28,12 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
     }
-    private void OnApplicationQuit()
-    {
-        PlayerPrefs.SetInt("Play_Button", 1);
-    }
-
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    static void OnBeforeSceneLoadRuntimeMethod()
-    {
-        PlayerPrefs.SetInt("Play_Button", 1);
-    }
-    private void Start()
+    void Start()
     {
         if(PlayerPrefs.GetInt("Play_Button") == 1)
         {
             Time.timeScale = 0;
+            Play_Canvas.gameObject.SetActive(true);
             gameOver_Canvas.gameObject.SetActive(false);
             Overlay_Canvas.gameObject.SetActive(false);
             PlayerPrefs.SetInt("Play_Button", 0);
@@ -54,7 +45,6 @@ public class GameManager : MonoBehaviour
             Play_Canvas.gameObject.SetActive(false);
             Time.timeScale = 1;
         }
-        
     }
     public void Start_Game()
     {
@@ -70,13 +60,6 @@ public class GameManager : MonoBehaviour
             {
                 GameOver();
             }
-        }
-    }
-    private void Pause_Game(KeyCode k)
-    {
-        if (Input.GetKeyDown(k))
-        {
-            Pause_Or_Resume();
         }
     }
     public static void Quit_Game()
